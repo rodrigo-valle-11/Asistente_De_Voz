@@ -12,9 +12,6 @@ id2 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_
 id3 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-ES_HELENA_11.0'
 id4 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0'
 
-def moisePendejo():
-    print("Moisés es un pendejo")
-
 def transformar_audio_en_texto():
     r = sr.Recognizer()
     with sr.Microphone() as origen:
