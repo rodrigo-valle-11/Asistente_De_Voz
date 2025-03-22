@@ -7,23 +7,19 @@ import webbrowser
 import datetime
 import wikipedia
 
-# opciones de voz / idioma
 id1 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
 id2 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
 id3 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-ES_HELENA_11.0'
 id4 = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0'
 
-
-
-# escuchar nuestro microfono y devolver el audio comotexto
 def transformar_audio_en_texto():
     r = sr.Recognizer()
     with sr.Microphone() as origen:
-        r.adjust_for_ambient_noise(origen)  # Ajusta para el ruido ambiente
+        r.adjust_for_ambient_noise(origen)
         r.pause_threshold = 0.8
         print("Ya puedes hablar")
         try:
-            audio = r.listen(origen, timeout=5)  # Establece un timeout
+            audio = r.listen(origen, timeout=5)
             pedido = r.recognize_google(audio, language="es-AR")
             print("Dijiste: " + pedido)
             return pedido.lower()
@@ -35,21 +31,14 @@ def transformar_audio_en_texto():
             print(f"Ups, algo ha salido mal: {e}")
         return "sigo esperando"
 
-
-
-# funcion para que el asistente pueda ser escuchado
 def hablar(mensaje):
 
-    # encender el motor de pyttsx3
     engine = pyttsx3.init()
     engine.setProperty('voice', id3)
 
-    # pronunciar mensaje
     engine.say(mensaje)
     engine.runAndWait()
 
-
-# informar el dia de la semana
 def pedir_dia():
 
     # crear variable con datos de hoy
